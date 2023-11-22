@@ -11,7 +11,7 @@ import model.NhanKhau;
  *
  * @author Admin
  */
-public class AdminDAO implements DAOInterface<NhanKhau>{
+public class NhanKhauDAO implements DAOInterface<NhanKhau>{
 
     @Override
     public int insert(NhanKhau t) {
@@ -30,6 +30,11 @@ public class AdminDAO implements DAOInterface<NhanKhau>{
 
     @Override
     public ArrayList<NhanKhau> selectAll() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<NhanKhau> selectByCondition(String condition) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
