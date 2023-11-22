@@ -12,7 +12,7 @@ public class JDBCUtil {
             var server = "DESKTOP-CFTMCK3\\SQLEXPRESS";
             var user = "sa";
             var password = "123456";
-            var db = "swing";
+            var db = "test1";
             var port = 1433;
             SQLServerDataSource ds = new SQLServerDataSource();
             ds.setUser(user);

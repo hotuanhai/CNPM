@@ -50,7 +50,7 @@ public class UserLogin extends JFrame{
         passwordField.setBounds(481, 286, 281, 68);
         contentPane.add(passwordField);
 
-        JLabel lblUsername = new JLabel("Username");
+        JLabel lblUsername = new JLabel("id");
         lblUsername.setBackground(Color.BLACK);
         lblUsername.setForeground(Color.BLACK);
         lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 31));
@@ -81,15 +81,15 @@ public class UserLogin extends JFrame{
 
 
 public void log() {
-                String userName = textField.getText();
+                String id = textField.getText();
                 String pass = passwordField.getText();
                 try {
                     Connection connection = JDBCUtil.getConnection();
 
                     PreparedStatement st = (PreparedStatement) connection
-                        .prepareStatement("Select name, pass from NguoiDung where name=? and pass=?");
+                        .prepareStatement("Select ma_hk, mk from TAI_KHOAN where ma_hk=? and mk=?");
 
-                    st.setString(1, userName);
+                    st.setString(1, id);
                     st.setString(2, pass);
                     ResultSet rs = st.executeQuery();
                     if (rs.next()) {

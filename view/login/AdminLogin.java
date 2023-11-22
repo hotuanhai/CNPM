@@ -48,7 +48,7 @@ public class AdminLogin extends JFrame{
         passwordField.setBounds(481, 286, 281, 68);
         contentPane.add(passwordField);
 
-        JLabel lblUsername = new JLabel("Username");
+        JLabel lblUsername = new JLabel("ID");
         lblUsername.setBackground(Color.BLACK);
         lblUsername.setForeground(Color.BLACK);
         lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 31));
@@ -76,15 +76,15 @@ public class AdminLogin extends JFrame{
     }
       
     public void log() {
-                String userName = textField.getText();
+                String id = textField.getText();
                 String pass = passwordField.getText();
                 try {
                     Connection connection = JDBCUtil.getConnection();
 
                     PreparedStatement st = (PreparedStatement) connection
-                        .prepareStatement("Select name, pass from QuanLy where name=? and pass=?");
+                        .prepareStatement("Select ma_cb, mk from TAI_KHOAN_ADMIN where ma_cb=? and mk=?");
 
-                    st.setString(1, userName);
+                    st.setString(1, id);
                     st.setString(2, pass);
                     ResultSet rs = st.executeQuery();
                     if (rs.next()) {
