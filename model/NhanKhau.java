@@ -56,6 +56,11 @@ public class NhanKhau {
 
     @Override
     public String toString() {
+        return "NhanKhau{" + "id=" + id + ", ten=" + ten + ", ngaySinh=" + ngaySinh + ", note=" + note + ", quanHe=" + quanHe + ", ma_hk=" + ma_hk + ", biDanh=" + biDanh + ", gioiTinh=" + gioiTinh + ", danToc=" + danToc + ", queQuan=" + queQuan + ", tonGiao=" + tonGiao + ", ngheNghiep=" + ngheNghiep + ", noiLam=" + noiLam + ", cccd=" + cccd + ", ngayCap=" + ngayCap + ", noiCap=" + noiCap + ", noiTTTruoc=" + noiTTTruoc + ", ngaychuyen=" + ngaychuyen + '}';
+    }
+
+    
+    public String toString1() {
         return "NhanKhau{" + "id=" + id + ", ten=" + ten + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + ", ngheNghiep=" + ngheNghiep + ", cccd=" + cccd + '}';
     }
 

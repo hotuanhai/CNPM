@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.JFileChooser;
+import view.admin.InputNhanKhau;
 import view.admin.UserInputFile;
 
 /**
@@ -12,9 +13,13 @@ import view.admin.UserInputFile;
  * @author Admin
  */
 public class AdminListener implements ActionListener{
+    private InputNhanKhau ink;
     private UserInputFile uif;
     public AdminListener(UserInputFile uif){
         this.uif = uif;
+    }
+    public AdminListener(InputNhanKhau ink){
+        this.ink = ink;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -42,7 +47,7 @@ public class AdminListener implements ActionListener{
             }
         }
         else if(src.equals("Them")){
-            
+            this.ink.them();
         }
     }
     
