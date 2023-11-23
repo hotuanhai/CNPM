@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 import javax.swing.border.EmptyBorder;
+import view.user.UserView;
 
 public class UserLogin extends JFrame{
     private static final long serialVersionUID = 1L;
@@ -81,7 +82,7 @@ public class UserLogin extends JFrame{
 
 
 public void log() {
-                String id = textField.getText();
+                String ma_hk = textField.getText();
                 String pass = passwordField.getText();
                 try {
                     Connection connection = JDBCUtil.getConnection();
@@ -89,13 +90,14 @@ public void log() {
                     PreparedStatement st = (PreparedStatement) connection
                         .prepareStatement("Select ma_hk, mk from TAI_KHOAN where ma_hk=? and mk=?");
 
-                    st.setString(1, id);
+                    st.setString(1, ma_hk);
                     st.setString(2, pass);
                     ResultSet rs = st.executeQuery();
                     if (rs.next()) {
                         dispose();
-
-                        JOptionPane.showMessageDialog(btnNewButton, "You have successfully logged in");
+                        UserView uv = new UserView(ma_hk) ;
+                        uv.setTitle("Welcome " + ma_hk);
+                        //JOptionPane.showMessageDialog(btnNewButton, "You have successfully logged in");
                     } else {
                         JOptionPane.showMessageDialog(btnNewButton, "Wrong Username & Password");
                     }
