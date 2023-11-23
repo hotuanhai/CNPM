@@ -12,5 +12,5 @@ public interface DAOInterface<T> {
 	
     public ArrayList<T> selectAll();
     
-    public ArrayList<T> selectByCondition(String condition);
+    public ArrayList<T> selectByHoKhau(String condition);
 }

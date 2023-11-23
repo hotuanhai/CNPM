@@ -46,6 +46,29 @@ public class NhanKhau {
         this.ngaychuyen = ngaychuyen;
     }
 
+    public NhanKhau(int id, String ten, Date ngaySinh, int gioiTinh, String cccd) {
+        this.id = id;
+        this.ten = ten;
+        this.ngaySinh = ngaySinh;
+        this.gioiTinh = gioiTinh;
+        this.cccd = cccd;
+    }
+
+    @Override
+    public String toString() {
+        return "NhanKhau{" + "id=" + id + ", ten=" + ten + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + ", ngheNghiep=" + ngheNghiep + ", cccd=" + cccd + '}';
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public int getId() {
         return id;
     }
@@ -190,5 +213,8 @@ public class NhanKhau {
         this.ngaychuyen = ngaychuyen;
     }
 
+    
+
+   
     
 }

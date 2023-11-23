@@ -5,6 +5,8 @@
 package test;
 
 import java.awt.EventQueue;
+import view.admin.InputNhanKhau;
+import view.admin.UserInputFile;
 import view.login.AdminLogin;
 import view.login.UserLogin;
 
@@ -14,7 +16,8 @@ import view.login.UserLogin;
  */
 public class testul {
     public static void main(String[] args) {
-        
+            new InputNhanKhau();
+// new UserInputFile();
                     //UserLogin frame = new UserLogin();
                     //AdminLogin frame1 = new AdminLogin();
 

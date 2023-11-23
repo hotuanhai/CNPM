@@ -1,7 +1,8 @@
 
-package view.user;
+package view.admin;
 
-import controller.UserListener;
+import controller.AdminListener;
+
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -16,7 +17,7 @@ public class UserInputFile extends JFrame{
         this.setLocationRelativeTo(null);
         this.setLayout(new FlowLayout());
         
-        ActionListener ac = new UserListener(this);
+       ActionListener ac = new AdminListener(this);
         btn_file = new JButton("Tai file txt");
         btn_file.setFocusable(false);
         btn_file.addActionListener(ac);

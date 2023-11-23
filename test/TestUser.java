@@ -4,7 +4,9 @@
  */
 package test;
 
-import view.user.UserInputFile;
+import view.admin.AdminView;
+import view.admin.UserInputFile;
+import view.user.UserView;
 
 /**
  *
@@ -12,6 +14,6 @@ import view.user.UserInputFile;
  */
 public class TestUser {
     public static void main(String[] args) {
-        new UserInputFile();
+        new AdminView();
     }
 }

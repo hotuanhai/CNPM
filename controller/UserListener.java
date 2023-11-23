@@ -5,38 +5,35 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.JFileChooser;
-import view.user.UserInputFile;
+//
+import view.user.UserView;
 
 public class UserListener implements ActionListener{
-    private UserInputFile uif;
-    public UserListener(UserInputFile uif){
-        this.uif = uif;
+    private UserView uv;
+   // private UserInputFile uif;
+    //public UserListener(UserInputFile uif){
+    //    this.uif = uif;
+   // }
+    public UserListener( UserView uv){
+        this.uv=uv;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
         String src = e.getActionCommand();
-        if(src.equals("Tai file txt")){
-            JFileChooser file_upload = new JFileChooser(); 
-            //file_upload. showOpenDialog(null);
-            //int res = file_upload.showOpenDialog(null); 
-            int res_2 = file_upload.showSaveDialog(null);
-            if(res_2 == JFileChooser.APPROVE_OPTION) {
-                File file_path = new File(file_upload.getSelectedFile().getAbsolutePath()); 
-                System.out.println(file_path);
-                if (file_path.length() == 3) {
-                    
-                } else if (file_path.length() > 3) {
-                    String str = file_path.getName().toString().substring(file_path.getName().toString().length() - 3); 
-                    if (str != "txt"){
-                        System.out.println("not a txt file");
-                    } else {
-                        
-                    }
-                } else {
-                  throw new IllegalArgumentException("word has fewer than 3 characters!");
-                }
-            }
-        }
+        
+          if (src.equals("Exit")) {
+			//this.menuExampleView.setTextJLabel("Ban da click JmenuItem EXIT");
+			System.exit(0);
+		} else if (src.equals("Hộ khẩu")) {
+			this.uv.setTextJLabel("Ban da click JmenuItem WELCOME");
+		} else if (src.equals("Nhân khẩu")) {
+			this.uv.innhankhau();
+		} else if (src.equals("Tạm trú")) {
+			this.uv.setTextJLabel("Ban da click JmenuItem WINDOW");
+		}else if (src.equals("Tạm vắng")) {
+			this.uv.setTextJLabel("Ban da click JmenuItem WINDOW1");
+		}
+        
     }
     
 }
