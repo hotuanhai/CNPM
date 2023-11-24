@@ -28,7 +28,7 @@ public class NhanKhauDAO implements DAOInterface<NhanKhau>{
             Connection con = JDBCUtil.getConnection();
             
 String sql="INSERT INTO NHAN_KHAU(name,birth,nghe,qh,ma_hk,namehome,sex,dantoc,que,tongiao,noilamviec,ngaycap,noicap,ngaychuyen,addresscu,cccd)"
-                    + " VALUES('"+t.getTen()+"' ,"+t.getNgaySinh()+" ,'"+t.getNgheNghiep()+"' ,'"+t.getQuanHe()+"', '"+t.getMa_hk()+"' ,'"+t.getBiDanh()+"', "+t.getGioiTinh()+" ,'"+t.getDanToc()+"','"+t.getQueQuan()+"','"+t.getTonGiao()+"','"+t.getNoiLam()+"'  ,"+t.getNgayCap()+" ,'"+t.getNoiCap()+"' ,"+t.getNgaychuyen()+" , '"+t.getNoiTTTruoc()+"' , '"+t.getCccd()+"' )";
+                    + " VALUES('"+t.getTen()+"' ,'"+t.getNgaySinh()+"' ,'"+t.getNgheNghiep()+"' ,'"+t.getQuanHe()+"', '"+t.getMa_hk()+"' ,'"+t.getBiDanh()+"', "+t.getGioiTinh()+" ,'"+t.getDanToc()+"','"+t.getQueQuan()+"','"+t.getTonGiao()+"','"+t.getNoiLam()+"'  ,'"+t.getNgayCap()+"' ,'"+t.getNoiCap()+"' ,'"+t.getNgaychuyen()+"' , '"+t.getNoiTTTruoc()+"' , '"+t.getCccd()+"' )";
             PreparedStatement st = con.prepareStatement(sql);
             
             kq = st.executeUpdate();
@@ -65,14 +65,26 @@ String sql="INSERT INTO NHAN_KHAU(name,birth,nghe,qh,ma_hk,namehome,sex,dantoc,q
 
     @Override
     public ArrayList<NhanKhau> selectAll() {
-        ArrayList kq = new ArrayList();
+        ArrayList<NhanKhau> kq = new ArrayList<NhanKhau>();
         try {
             
         Connection con = JDBCUtil.getConnection();
             
-        String sql = "";
-        PreparedStatement st = con.prepareStatement(sql);
         
+        Statement st = con.createStatement();
+        String sql = "select * from NHAN_KHAU";
+        ResultSet rs = st.executeQuery(sql);
+        
+        while(rs.next()){
+            int id =rs.getInt("id");
+            String name = rs.getString("name");
+            Date birth = rs.getDate("birth");
+            int sex = rs.getInt("sex");
+            String cccd = rs.getString("cccd");
+            
+            NhanKhau NhanKhau = new NhanKhau(id, name, birth,sex,cccd);
+            kq.add(NhanKhau);
+        }
         JDBCUtil.closeConnection(con);
         } catch (SQLException ex) {
             Logger.getLogger(NhanKhauDAO.class.getName()).log(Level.SEVERE, null, ex);

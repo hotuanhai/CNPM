@@ -4,7 +4,11 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import view.admin.AdminView;
 import view.admin.InputNhanKhau;
 import view.admin.UserInputFile;
 
@@ -15,39 +19,42 @@ import view.admin.UserInputFile;
 public class AdminListener implements ActionListener{
     private InputNhanKhau ink;
     private UserInputFile uif;
+    private AdminView av;
     public AdminListener(UserInputFile uif){
         this.uif = uif;
     }
     public AdminListener(InputNhanKhau ink){
         this.ink = ink;
     }
+    public AdminListener(AdminView av){
+        this.av = av;
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         String src = e.getActionCommand();
         if(src.equals("Tai file txt")){
-            JFileChooser file_upload = new JFileChooser(); 
-            //file_upload. showOpenDialog(null);
-            //int res = file_upload.showOpenDialog(null); 
-            int res_2 = file_upload.showSaveDialog(null);
-            if(res_2 == JFileChooser.APPROVE_OPTION) {
-                File file_path = new File(file_upload.getSelectedFile().getAbsolutePath()); 
-                System.out.println(file_path);
-                if (file_path.length() == 3) {
-                    
-                } else if (file_path.length() > 3) {
-                    String str = file_path.getName().toString().substring(file_path.getName().toString().length() - 3); 
-                    if (str != "txt"){
-                        System.out.println("not a txt file");
-                    } else {
-                        
-                    }
-                } else {
-                  throw new IllegalArgumentException("word has fewer than 3 characters!");
-                }
+            try {
+                this.uif.taifile();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(AdminListener.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        else if(src.equals("File txt")){
+            new UserInputFile();
+        }
+        else if(src.equals("Truc tiep")){
+            new InputNhanKhau();
         }
         else if(src.equals("Them")){
             this.ink.them();
+        }
+        else if(src.equals("Nhân khẩu")){
+            //System.out.println("hi");
+            this.av.innhankhau();
+        }
+        else if(src.equals("Hộ khẩu")){
+            //System.out.println("hi");
+            this.av.inhokhau();
         }
     }
     

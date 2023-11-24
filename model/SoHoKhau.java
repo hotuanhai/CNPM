@@ -37,6 +37,11 @@ public class SoHoKhau {
     public void setDiachi(String diachi) {
         this.diachi = diachi;
     }
+
+    @Override
+    public String toString() {
+        return "SoHoKhau{" + "ma_hk=" + ma_hk + ", tenchuho=" + tenchuho + ", diachi=" + diachi + '}';
+    }
     
     
 }

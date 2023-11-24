@@ -3,6 +3,7 @@ package view.admin;
 import java.sql.*;
 
 import controller.AdminListener;
+import dao.NhanKhauDAO;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -41,7 +42,7 @@ public class InputNhanKhau extends JFrame{
     private JTextField jTextField_ngaychuyen;
     public InputNhanKhau(){
         this.setSize(700, 700);
-	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	this.setLocationRelativeTo(null);
         Font font = new Font("Arial", Font.BOLD, 20);
         
@@ -157,39 +158,35 @@ public class InputNhanKhau extends JFrame{
     public void them(){
         this.nk.setTen(jTextField_ten.getText());
         
-        
         // Extract the text from jTextField_ngaysinh
         String ngaySinhText = jTextField_ngaysinh.getText();
-
-        // Parse the text into a java.util.Date
-        
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            java.util.Date utilDate = null;
+        // Parse the text into a java.util.Date      
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date utilDate = null;
         try {
             utilDate = dateFormat.parse(ngaySinhText);
         } catch (ParseException ex) {
             Logger.getLogger(InputNhanKhau.class.getName()).log(Level.SEVERE, null, ex);
         }
+        // Convert java.util.Date to java.sql.Date
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 
-            // Convert java.util.Date to java.sql.Date
-            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        this.nk.setNgaySinh(sqlDate);
 
-            this.nk.setNgaySinh(sqlDate);
-
-            
-            this.nk.setNote(jTextField_note.getText());
-            this.nk.setQuanHe(jTextField_note.getText());
-            this.nk.setMa_hk(jTextField_note.getText());
-            this.nk.setBiDanh(jTextField_bidanh.getText());
-            
-                    try {
-                int gioiTinh = Integer.parseInt(jTextField_gioitinh.getText());
-                this.nk.setGioiTinh(gioiTinh);
-            } catch (NumberFormatException e) {
-                // Handle the case where the input is not a valid integer
-                e.printStackTrace();
+        this.nk.setNote(jTextField_note.getText());
+        this.nk.setQuanHe(jTextField_note.getText());
+        this.nk.setMa_hk(jTextField_mahk.getText());
+        this.nk.setBiDanh(jTextField_bidanh.getText());
+        String gioitinh =  jTextField_gioitinh.getText();
+        
+        try {
+            int gioiTinh = Integer.parseInt(jTextField_gioitinh.getText());
+            this.nk.setGioiTinh(gioiTinh);
+        } catch (NumberFormatException nfe) {
+            // Handle the case where the input is not a valid integer
+            nfe.printStackTrace();
             }
-            
+           
            
             this.nk.setDanToc(jTextField_dt.getText());
             this.nk.setQueQuan(jTextField_que.getText());
@@ -202,12 +199,12 @@ public class InputNhanKhau extends JFrame{
             this.nk.setNoiTTTruoc(jTextField_ttt.getText());
             this.nk.setNgaychuyen(sqlDate);
             
-        
-        
             System.out.println(this.nk.getTen());
             System.out.println(this.nk.getNgaySinh());
             System.out.println(this.nk.getNote());
             System.out.println(nk.toString());
+            
+            NhanKhauDAO.getInstance().insert(nk);
     }
     
 }

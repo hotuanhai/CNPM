@@ -16,10 +16,13 @@ import view.login.UserLogin;
  */
 public class testul {
     public static void main(String[] args) {
-            new InputNhanKhau();
+            //new InputNhanKhau();
 // new UserInputFile();
                     //UserLogin frame = new UserLogin();
                     //AdminLogin frame1 = new AdminLogin();
-
+                String s ="";
+                if(!s.equals("")){
+                    System.out.println("h");
+                }
     }
 }
