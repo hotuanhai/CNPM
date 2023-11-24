@@ -194,9 +194,28 @@ public class InputNhanKhau extends JFrame{
             this.nk.setNgheNghiep(jTextField_nghe.getText());
             this.nk.setNoiLam(jTextField_noilam.getText());
             this.nk.setCccd(jTextField_cccd.getText());
+            
+            ngaySinhText = jTextField_ngaycap.getText();     
+            utilDate = null;
+            try {
+            utilDate = dateFormat.parse(ngaySinhText);
+            } catch (ParseException ex) {
+            Logger.getLogger(InputNhanKhau.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            sqlDate = new java.sql.Date(utilDate.getTime());
             this.nk.setNgayCap(sqlDate);
+            
             this.nk.setNoiCap(jTextField_noicap.getText());
             this.nk.setNoiTTTruoc(jTextField_ttt.getText());
+            
+            ngaySinhText = jTextField_ngaychuyen.getText();     
+            utilDate = null;
+            try {
+            utilDate = dateFormat.parse(ngaySinhText);
+            } catch (ParseException ex) {
+            Logger.getLogger(InputNhanKhau.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            sqlDate = new java.sql.Date(utilDate.getTime());
             this.nk.setNgaychuyen(sqlDate);
             
             System.out.println(this.nk.getTen());
