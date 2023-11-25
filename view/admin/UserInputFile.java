@@ -21,7 +21,7 @@ import model.NhanKhau;
 public class UserInputFile extends JFrame{
     private JButton btn_file;
     public UserInputFile(){
-        this.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+        //this.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         this.setSize(500, 500);
         this.setTitle("Demo");
         this.setLocationRelativeTo(null);

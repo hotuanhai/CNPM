@@ -11,6 +11,8 @@ import javax.swing.JFileChooser;
 import view.admin.AdminView;
 import view.admin.InputNhanKhau;
 import view.admin.UserInputFile;
+import view.admin.paper.XinTamTru;
+import view.admin.paper.XinTamVang;
 
 /**
  *
@@ -20,6 +22,11 @@ public class AdminListener implements ActionListener{
     private InputNhanKhau ink;
     private UserInputFile uif;
     private AdminView av;
+//    private XinTamVang xtv;
+//    
+//    public AdminListener(XinTamVang xtv){
+//        this.xtv = xtv;
+//    }
     public AdminListener(UserInputFile uif){
         this.uif = uif;
     }
@@ -55,6 +62,15 @@ public class AdminListener implements ActionListener{
         else if(src.equals("Hộ khẩu")){
             //System.out.println("hi");
             this.av.inhokhau();
+        }
+        else if(src.equals("Mới sinh")){
+            System.out.println("aaa");
+        }
+        else if(src.equals("Tạm vắng")){
+            new XinTamVang();
+        }
+        else if(src.equals("Tạm trú")){
+            new XinTamTru();
         }
     }
     

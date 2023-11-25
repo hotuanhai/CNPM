@@ -7,6 +7,8 @@ package test;
 import java.awt.EventQueue;
 import view.admin.InputNhanKhau;
 import view.admin.UserInputFile;
+import view.admin.paper.XinTamTru;
+import view.admin.paper.XinTamVang;
 import view.login.AdminLogin;
 import view.login.UserLogin;
 
@@ -20,9 +22,10 @@ public class testul {
 // new UserInputFile();
                     //UserLogin frame = new UserLogin();
                     //AdminLogin frame1 = new AdminLogin();
-                String s ="";
-                if(!s.equals("")){
-                    System.out.println("h");
-                }
+//                String s ="";
+//                if(!s.equals("")){
+//                    System.out.println("h");
+//                }
+new XinTamTru();
     }
 }

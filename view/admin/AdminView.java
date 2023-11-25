@@ -50,10 +50,10 @@ public class AdminView extends JFrame{
         
         JMenu jMenu_Thaydoi = new JMenu("Thay đổi nhân khẩu");
 	JMenuItem jMenuItem_sinh = new JMenuItem("Mới sinh");
-	//jMenuItem_tamtru.addActionListener(ul);
+	jMenuItem_sinh.addActionListener(av);
                 
         JMenuItem jMenuItem_khaitu = new JMenuItem("Khai tử");
-	//jMenuItem_tamvang.addActionListener(ul);
+	//jMenuItem_khaitu.addActionListener(ul);
 		
 	jMenu_Thaydoi.add(jMenuItem_sinh);
 	jMenu_Thaydoi.addSeparator();
@@ -88,10 +88,13 @@ public class AdminView extends JFrame{
             System.out.println(nk.toString());
             }
         }
+        
         public void inhokhau(){
             ArrayList<SoHoKhau> hokhau=  HoKhauDAO.getInstance().selectAll();
             for(SoHoKhau nk : hokhau){
             System.out.println(nk.toString());
             }
         }
+        
+        
 }
