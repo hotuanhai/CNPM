@@ -21,6 +21,7 @@ public class NhanKhau {
     private String noiCap;
     private String noiTTTruoc;
     private Date ngaychuyen;
+    private String address;
 
     public NhanKhau() {
     }
@@ -64,15 +65,13 @@ public class NhanKhau {
         return "NhanKhau{" + "id=" + id + ", ten=" + ten + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + ", ngheNghiep=" + ngheNghiep + ", cccd=" + cccd + '}';
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }   
     
     public int getId() {
         return id;

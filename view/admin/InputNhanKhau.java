@@ -39,7 +39,7 @@ public class InputNhanKhau extends JFrame{
     private JTextField jTextField_ngaycap;
     private JTextField jTextField_noicap;
     private JTextField jTextField_ttt;
-    private JTextField jTextField_ngaychuyen;
+//    private JTextField jTextField_ngaychuyen;
     public InputNhanKhau(){
         this.setSize(700, 700);
 	//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,8 +80,8 @@ public class InputNhanKhau extends JFrame{
 	jLabel_noicap.setFont(font);
         JLabel jLabel_ttt = new JLabel("Noi thuong tru truoc");
 	jLabel_ttt.setFont(font);
-        JLabel jLabel_ngaychuyen = new JLabel("Ngay chuyen");
-	jLabel_ngaychuyen.setFont(font);
+//        JLabel jLabel_ngaychuyen = new JLabel("Ngay chuyen");
+//	jLabel_ngaychuyen.setFont(font);
         
         jTextField_ten = new JTextField(50);
 	jTextField_ten.setFont(font);
@@ -115,8 +115,8 @@ public class InputNhanKhau extends JFrame{
 	jTextField_noicap.setFont(font);
         jTextField_ttt = new JTextField(50);
 	jTextField_ttt.setFont(font);
-	jTextField_ngaychuyen = new JTextField(50);
-	jTextField_ngaychuyen.setFont(font);
+//	jTextField_ngaychuyen = new JTextField(50);
+//	jTextField_ngaychuyen.setFont(font);
 		
         JPanel jPanelIO = new JPanel();
 	jPanelIO.setLayout(new GridLayout(17, 2, 2, 10));
@@ -136,7 +136,7 @@ public class InputNhanKhau extends JFrame{
         jPanelIO.add(jLabel_ngaycap); jPanelIO.add(jTextField_ngaycap);
         jPanelIO.add(jLabel_noicap); jPanelIO.add(jTextField_noicap);
         jPanelIO.add(jLabel_ttt); jPanelIO.add(jTextField_ttt);
-        jPanelIO.add(jLabel_ngaychuyen); jPanelIO.add(jTextField_ngaychuyen);
+//        jPanelIO.add(jLabel_ngaychuyen); jPanelIO.add(jTextField_ngaychuyen);
         
         ActionListener ac = new AdminListener(this);
         //JScrollPane js = new JScrollPane(jPanelIO, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -208,15 +208,18 @@ public class InputNhanKhau extends JFrame{
             this.nk.setNoiCap(jTextField_noicap.getText());
             this.nk.setNoiTTTruoc(jTextField_ttt.getText());
             
-            ngaySinhText = jTextField_ngaychuyen.getText();     
-            utilDate = null;
-            try {
-            utilDate = dateFormat.parse(ngaySinhText);
-            } catch (ParseException ex) {
-            Logger.getLogger(InputNhanKhau.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            sqlDate = new java.sql.Date(utilDate.getTime());
-            this.nk.setNgaychuyen(sqlDate);
+//            ngaySinhText = jTextField_ngaychuyen.getText();     
+//            java.util.Date utilDate1 = null;
+//            if(!ngaySinhText.equals("") ){
+//            
+//            try {
+//            utilDate1 = dateFormat.parse(ngaySinhText);
+//            } catch (ParseException ex) {
+//            Logger.getLogger(InputNhanKhau.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            sqlDate = new java.sql.Date(utilDate1.getTime());
+//            this.nk.setNgaychuyen(sqlDate);
+//            }
             
             System.out.println(this.nk.getTen());
             System.out.println(this.nk.getNgaySinh());

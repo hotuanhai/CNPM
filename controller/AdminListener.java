@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import view.admin.AdminView;
 import view.admin.InputNhanKhau;
+import view.admin.KhaiSinh;
 import view.admin.UserInputFile;
 import view.admin.paper.XinTamTru;
 import view.admin.paper.XinTamVang;
@@ -22,11 +23,16 @@ public class AdminListener implements ActionListener{
     private InputNhanKhau ink;
     private UserInputFile uif;
     private AdminView av;
+    private KhaiSinh ks;
 //    private XinTamVang xtv;
 //    
 //    public AdminListener(XinTamVang xtv){
 //        this.xtv = xtv;
 //    }
+    public AdminListener(KhaiSinh ks){
+        this.ks = ks;
+    }
+    
     public AdminListener(UserInputFile uif){
         this.uif = uif;
     }
@@ -71,6 +77,9 @@ public class AdminListener implements ActionListener{
         }
         else if(src.equals("Tạm trú")){
             new XinTamTru();
+        }
+        else if(src.equals("Nộp khai sinh")){
+            this.ks.saveToAttributes();
         }
     }
     

@@ -101,20 +101,20 @@ public class UserInputFile extends JFrame{
             nk.setNoiCap(input.next());
             nk.setNoiTTTruoc(input.next());
             
-            if(input.hasNext()){
-            ngaySinhText = input.next();
-            }
-            else{
-                ngaySinhText ="1111-11-11";
-            }
-                utilDate = null;
-                try {
-                utilDate = dateFormat.parse(ngaySinhText);
-                } catch (ParseException ex) {
-                Logger.getLogger(InputNhanKhau.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                sqlDate = new java.sql.Date(utilDate.getTime());
-                nk.setNgaychuyen(sqlDate);
+//            if(input.hasNext()){
+//            ngaySinhText = input.next();
+//            }
+//            else{
+//                ngaySinhText ="1111-11-11";
+//            }
+//                utilDate = null;
+//                try {
+//                utilDate = dateFormat.parse(ngaySinhText);
+//                } catch (ParseException ex) {
+//                Logger.getLogger(InputNhanKhau.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//                sqlDate = new java.sql.Date(utilDate.getTime());
+//                nk.setNgaychuyen(sqlDate);
             
             NhanKhauDAO.getInstance().insert(nk);
          }
