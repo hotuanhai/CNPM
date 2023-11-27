@@ -140,4 +140,58 @@ String sql="INSERT INTO NHAN_KHAU(name,birth,nghe,qh,ma_hk,namehome,sex,dantoc,q
         }
         return kq;
     }
+    
+    public int mat(int t) {
+        int kq=0;
+        try{    
+            Connection con = JDBCUtil.getConnection();
+         
+            String sql = "UPDATE NHAN_KHAU SET note = 'mat' WHERE id = ?";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setInt(1, t);
+            System.out.println(sql);
+            kq = st.executeUpdate();
+            
+            JDBCUtil.closeConnection(con);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanKhauDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return kq;
+    }
+    
+    public int chuyen(NhanKhau t) {
+    int kq = 0;
+    try {
+        Connection con = JDBCUtil.getConnection();
+
+       
+        String query = "SELECT address FROM NHAN_KHAU WHERE id = ?";
+        PreparedStatement selectSt = con.prepareStatement(query);
+        selectSt.setInt(1, t.getId());
+        ResultSet rs = selectSt.executeQuery();
+
+        String currentAddress = "";
+        if (rs.next()) {
+            currentAddress = rs.getString("address");
+        }
+
+        String sql = "UPDATE NHAN_KHAU SET addresscu = ?, address = ?, ngaychuyen = ? WHERE id = ?";
+        PreparedStatement updateSt = con.prepareStatement(sql);
+        updateSt.setString(1, currentAddress); 
+        updateSt.setString(2, t.getAddress()); 
+        updateSt.setDate(3, t.getNgaychuyen());
+        updateSt.setInt(4, t.getId());
+
+        kq = updateSt.executeUpdate();
+
+        rs.close();
+        selectSt.close();
+        updateSt.close();
+
+        JDBCUtil.closeConnection(con);
+    } catch (SQLException ex) {
+        Logger.getLogger(NhanKhauDAO.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return kq;
+}
 }

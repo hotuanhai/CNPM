@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import view.admin.ChuyenDi;
 import view.admin.InputHoKhau;
 import view.admin.InputNhanKhau;
 import view.admin.KhaiSinh;
@@ -51,6 +52,7 @@ public class testul {
 //            }
 //        }
         //new KhaiSinh();
-        new InputHoKhau();
+        //new InputHoKhau();
+        new ChuyenDi();
     }
 }

@@ -10,9 +10,11 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import model.SoHoKhau;
 import view.admin.AdminView;
+import view.admin.ChuyenDi;
 import view.admin.InputHoKhau;
 import view.admin.InputNhanKhau;
 import view.admin.KhaiSinh;
+import view.admin.KhaiTu;
 import view.admin.UserInputFile;
 import view.admin.paper.XinTamTru;
 import view.admin.paper.XinTamVang;
@@ -27,11 +29,19 @@ public class AdminListener implements ActionListener{
     private AdminView av;
     private KhaiSinh ks;
     private InputHoKhau ihk;
+    private KhaiTu kt;
+    private ChuyenDi cd;
 //    private XinTamVang xtv;
 //    
 //    public AdminListener(XinTamVang xtv){
 //        this.xtv = xtv;
 //    }
+    public AdminListener(ChuyenDi cd){
+        this.cd=cd;
+    }
+    public AdminListener(KhaiTu kt){
+        this.kt=kt;
+    }
     public AdminListener(InputHoKhau ihk){
         this.ihk=ihk;
     }
@@ -76,7 +86,7 @@ public class AdminListener implements ActionListener{
             this.av.inhokhau();
         }
         else if(src.equals("Mới sinh")){
-            System.out.println("aaa");
+            new KhaiSinh();
         }
         else if(src.equals("Tạm vắng")){
             new XinTamVang();
@@ -95,6 +105,18 @@ public class AdminListener implements ActionListener{
         }
         else if(src.equals("Thêm hộ khẩu")){
             this.ihk.saveToAttributes();
+        }
+        else if(src.equals("Xác nhận khai tử")){
+            this.kt.saveToAttributes();
+        }
+        else if(src.equals("Khai tử")){
+            new KhaiTu();
+        }
+        else if(src.equals("Chuyển đi")){
+            new ChuyenDi();
+        }
+        else if(src.equals("Nộp chuyển đi")){
+            this.cd.saveToAttributes();
         }
     }
     

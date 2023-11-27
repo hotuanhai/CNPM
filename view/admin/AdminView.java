@@ -53,11 +53,16 @@ public class AdminView extends JFrame{
 	jMenuItem_sinh.addActionListener(av);
                 
         JMenuItem jMenuItem_khaitu = new JMenuItem("Khai tử");
-	//jMenuItem_khaitu.addActionListener(ul);
+	jMenuItem_khaitu.addActionListener(av);
+        
+        JMenuItem jMenuItem_chuyen = new JMenuItem("Chuyển đi");
+	jMenuItem_chuyen.addActionListener(av);
 		
 	jMenu_Thaydoi.add(jMenuItem_sinh);
 	jMenu_Thaydoi.addSeparator();
 	jMenu_Thaydoi.add(jMenuItem_khaitu);
+        jMenu_Thaydoi.addSeparator();
+        jMenu_Thaydoi.add(jMenuItem_chuyen);
         
         JMenu jMenu_Them = new JMenu("Thêm nhân khẩu");
 	JMenuItem jMenuItem_file = new JMenuItem("File txt");
