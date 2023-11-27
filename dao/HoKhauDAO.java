@@ -25,11 +25,13 @@ public class HoKhauDAO implements DAOInterface<SoHoKhau>{
         try {
             
             Connection con = JDBCUtil.getConnection();
-            String sql ="";
+             String sql ="INSERT INTO HO_KHAU(ma_hk,address,tenchuho)"+ " VALUES(?,?,?)";
             PreparedStatement st = con.prepareStatement(sql);
-            
+            st.setString(1, t.getMa_hk());
+            st.setString(2,t.getDiachi());
+            st.setString(3, t.getTenchuho());
             kq = st.executeUpdate();
-            
+            System.out.println(sql);
             JDBCUtil.closeConnection(con);
         } catch (SQLException ex) {
             Logger.getLogger(NhanKhauDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -74,7 +76,7 @@ public class HoKhauDAO implements DAOInterface<SoHoKhau>{
         ResultSet rs = st.executeQuery(sql);
         
         while(rs.next()){
-            int id =rs.getInt("ma_hk");
+            String id =rs.getString("ma_hk");
             String dchi = rs.getString("address");
             String name = rs.getString("tenchuho");
                         

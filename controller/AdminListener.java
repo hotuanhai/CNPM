@@ -8,7 +8,9 @@ import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import model.SoHoKhau;
 import view.admin.AdminView;
+import view.admin.InputHoKhau;
 import view.admin.InputNhanKhau;
 import view.admin.KhaiSinh;
 import view.admin.UserInputFile;
@@ -24,11 +26,15 @@ public class AdminListener implements ActionListener{
     private UserInputFile uif;
     private AdminView av;
     private KhaiSinh ks;
+    private InputHoKhau ihk;
 //    private XinTamVang xtv;
 //    
 //    public AdminListener(XinTamVang xtv){
 //        this.xtv = xtv;
 //    }
+    public AdminListener(InputHoKhau ihk){
+        this.ihk=ihk;
+    }
     public AdminListener(KhaiSinh ks){
         this.ks = ks;
     }
@@ -80,6 +86,15 @@ public class AdminListener implements ActionListener{
         }
         else if(src.equals("Nộp khai sinh")){
             this.ks.saveToAttributes();
+        }
+        else if(src.equals("file txt")){
+            System.out.println("fe");
+        }
+        else if(src.equals("truc tiep")){
+            new InputHoKhau();
+        }
+        else if(src.equals("Thêm hộ khẩu")){
+            this.ihk.saveToAttributes();
         }
     }
     

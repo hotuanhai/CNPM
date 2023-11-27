@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import view.admin.InputHoKhau;
 import view.admin.InputNhanKhau;
 import view.admin.KhaiSinh;
 import view.admin.UserInputFile;
@@ -49,6 +50,7 @@ public class testul {
 //            Logger.getLogger(InputNhanKhau.class.getName()).log(Level.SEVERE, null, ex);
 //            }
 //        }
-        new KhaiSinh();
+        //new KhaiSinh();
+        new InputHoKhau();
     }
 }

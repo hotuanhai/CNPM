@@ -1,24 +1,24 @@
 package model;
 import java.lang.*;
 public class SoHoKhau {
-    private int ma_hk;
+    private String ma_hk;
     private String tenchuho;
     private String diachi;
     
      public SoHoKhau() {
     }
 
-    public SoHoKhau(int ma_hk, String tenchuho, String diachi) {
+    public SoHoKhau(String ma_hk, String tenchuho, String diachi) {
         this.ma_hk = ma_hk;
         this.tenchuho = tenchuho;
         this.diachi = diachi;
     }
 
-    public int getMa_hk() {
+    public String getMa_hk() {
         return ma_hk;
     }
 
-    public void setMa_hk(int ma_hk) {
+    public void setMa_hk(String ma_hk) {
         this.ma_hk = ma_hk;
     }
 
