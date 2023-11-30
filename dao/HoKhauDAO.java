@@ -31,7 +31,7 @@ public class HoKhauDAO implements DAOInterface<SoHoKhau>{
             st.setString(2,t.getDiachi());
             st.setString(3, t.getTenchuho());
             kq = st.executeUpdate();
-            System.out.println(sql);
+            //System.out.println(sql);
             JDBCUtil.closeConnection(con);
         } catch (SQLException ex) {
             Logger.getLogger(NhanKhauDAO.class.getName()).log(Level.SEVERE, null, ex);

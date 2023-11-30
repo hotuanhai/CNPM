@@ -26,6 +26,28 @@ public class NhanKhau {
     public NhanKhau() {
     }
 
+    public NhanKhau(int id, String ten, Date ngaySinh, String note, String quanHe, String ma_hk, String biDanh, int gioiTinh, String danToc, String queQuan, String tonGiao, String ngheNghiep, String noiLam, String cccd, Date ngayCap, String noiCap, String noiTTTruoc, Date ngaychuyen, String address) {
+        this.id = id;
+        this.ten = ten;
+        this.ngaySinh = ngaySinh;
+        this.note = note;
+        this.quanHe = quanHe;
+        this.ma_hk = ma_hk;
+        this.biDanh = biDanh;
+        this.gioiTinh = gioiTinh;
+        this.danToc = danToc;
+        this.queQuan = queQuan;
+        this.tonGiao = tonGiao;
+        this.ngheNghiep = ngheNghiep;
+        this.noiLam = noiLam;
+        this.cccd = cccd;
+        this.ngayCap = ngayCap;
+        this.noiCap = noiCap;
+        this.noiTTTruoc = noiTTTruoc;
+        this.ngaychuyen = ngaychuyen;
+        this.address = address;
+    }
+
     public NhanKhau(int id, String ten, Date ngaySinh, String note, String quanHe, String ma_hk, String biDanh, int gioiTinh, String danToc, String queQuan, String tonGiao, String ngheNghiep, String noiLam, String cccd, Date ngayCap, String noiCap, String noiTTTruoc, Date ngaychuyen) {
         this.id = id;
         this.ten = ten;
@@ -63,9 +85,9 @@ public class NhanKhau {
     
 
     
-    public String toString1() {
-        return "NhanKhau{" + "id=" + id + ", ten=" + ten + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + ", ngheNghiep=" + ngheNghiep + ", cccd=" + cccd + '}';
-    }
+//    public String toString1() {
+//        return "NhanKhau{" + "id=" + id + ", ten=" + ten + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + ", ngheNghiep=" + ngheNghiep + ", cccd=" + cccd + '}';
+//    }
 
     public String getAddress() {
         return address;

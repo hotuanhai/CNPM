@@ -79,10 +79,25 @@ String sql="INSERT INTO NHAN_KHAU(name,birth,nghe,qh,ma_hk,namehome,sex,dantoc,q
             int id =rs.getInt("id");
             String name = rs.getString("name");
             Date birth = rs.getDate("birth");
+            String note = rs.getString("note");
+            String qh = rs.getString("qh");
+            String mahk = rs.getString("ma_hk");
+            String bidanh = rs.getString("namehome");
             int sex = rs.getInt("sex");
+            String dantoc = rs.getString("dantoc");
+            String que = rs.getString("que");
+            String tongiao = rs.getString("tongiao");
+            String noilv = rs.getString("noilamviec");
+            Date ngaycap = rs.getDate("ngaycap");
+            String noicap = rs.getString("noicap");
+            Date ngaychuyen = rs.getDate("ngaychuyen");
+            String addresscu = rs.getString("addresscu");
             String cccd = rs.getString("cccd");
+            String nghe = rs.getString("nghe");
+            String address = rs.getString("address");
             
-            NhanKhau NhanKhau = new NhanKhau(id, name, birth,sex,cccd);
+            NhanKhau NhanKhau = new NhanKhau(id, name, birth,note,qh,mahk,bidanh,sex,dantoc,que,tongiao,nghe,
+                    noilv,cccd,ngaycap,noicap,addresscu,ngaychuyen,address);
             kq.add(NhanKhau);
         }
         JDBCUtil.closeConnection(con);
@@ -194,4 +209,29 @@ String sql="INSERT INTO NHAN_KHAU(name,birth,nghe,qh,ma_hk,namehome,sex,dantoc,q
     }
     return kq;
 }
+    public int updateHK(int t,String ma_hkmoi) {
+        int kq=0;
+        try{    
+            Connection con = JDBCUtil.getConnection();
+         
+            String query = "SELECT * FROM NHAN_KHAU WHERE id = ?";
+            PreparedStatement selectSt = con.prepareStatement(query);
+            selectSt.setInt(1, t);
+            ResultSet rs = selectSt.executeQuery();
+            
+            if (rs.next()) {
+                
+                String sql = "UPDATE NHAN_KHAU SET ma_hk = ? WHERE id = ?";
+                PreparedStatement updateSt = con.prepareStatement(sql);
+                updateSt.setString(1, ma_hkmoi);
+                updateSt.setInt(2, t);
+                kq = updateSt.executeUpdate();
+        }
+            
+            JDBCUtil.closeConnection(con);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanKhauDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return kq;
+    }
 }

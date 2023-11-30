@@ -13,6 +13,7 @@ import view.admin.ChuyenDi;
 import view.admin.InputHoKhau;
 import view.admin.InputNhanKhau;
 import view.admin.KhaiSinh;
+import view.admin.TachHoKhau;
 import view.admin.UserInputFile;
 import view.admin.paper.XinTamTru;
 import view.admin.paper.XinTamVang;
@@ -53,6 +54,7 @@ public class testul {
 //        }
         //new KhaiSinh();
         //new InputHoKhau();
-        new ChuyenDi();
+        //new ChuyenDi();
+        new TachHoKhau();
     }
 }

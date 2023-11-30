@@ -15,6 +15,7 @@ import view.admin.InputHoKhau;
 import view.admin.InputNhanKhau;
 import view.admin.KhaiSinh;
 import view.admin.KhaiTu;
+import view.admin.TachHoKhau;
 import view.admin.UserInputFile;
 import view.admin.paper.XinTamTru;
 import view.admin.paper.XinTamVang;
@@ -31,11 +32,15 @@ public class AdminListener implements ActionListener{
     private InputHoKhau ihk;
     private KhaiTu kt;
     private ChuyenDi cd;
+    private TachHoKhau thk;
 //    private XinTamVang xtv;
 //    
 //    public AdminListener(XinTamVang xtv){
 //        this.xtv = xtv;
 //    }
+    public AdminListener(TachHoKhau thk){
+        this.thk=thk;
+    }
     public AdminListener(ChuyenDi cd){
         this.cd=cd;
     }
@@ -117,6 +122,9 @@ public class AdminListener implements ActionListener{
         }
         else if(src.equals("Nộp chuyển đi")){
             this.cd.saveToAttributes();
+        }
+        else if(src.equals("Nộp tách hộ khẩu")){
+            this.thk.saveToAttributes();
         }
     }
     

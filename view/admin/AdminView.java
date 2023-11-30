@@ -103,16 +103,18 @@ public class AdminView extends JFrame{
     
         public void innhankhau(){
             ArrayList<NhanKhau> nhankhau=  NhanKhauDAO.getInstance().selectAll();
-            for(NhanKhau nk : nhankhau){
-            System.out.println(nk.toString());
-            }
+            new BangNK(nhankhau);
+//            for(NhanKhau nk : nhankhau){
+//            System.out.println(nk.toString());
+//            }
         }
         
         public void inhokhau(){
             ArrayList<SoHoKhau> hokhau=  HoKhauDAO.getInstance().selectAll();
-            for(SoHoKhau nk : hokhau){
-            System.out.println(nk.toString());
-            }
+            new BangHK(hokhau);
+//            for(SoHoKhau nk : hokhau){
+//            System.out.println(nk.toString());
+//            }
         }
         
         
