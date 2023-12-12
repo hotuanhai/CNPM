@@ -1,9 +1,13 @@
 
 package view.admin;
+import java.sql.*;
 
+import controller.AdminListener;
+import dao.NhanKhauDAO;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,7 +15,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import model.NhanKhau;
-
+//import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class InputNhanKhau extends JFrame{
     private NhanKhau nk;
@@ -31,12 +39,14 @@ public class InputNhanKhau extends JFrame{
     private JTextField jTextField_ngaycap;
     private JTextField jTextField_noicap;
     private JTextField jTextField_ttt;
-    private JTextField jTextField_ngaychuyen;
+//    private JTextField jTextField_ngaychuyen;
     public InputNhanKhau(){
         this.setSize(700, 700);
-	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	this.setLocationRelativeTo(null);
         Font font = new Font("Arial", Font.BOLD, 20);
+        
+        this.nk = new NhanKhau();
         
         JLabel jLabel_ten = new JLabel("Ten");
 	jLabel_ten.setFont(font);		
@@ -70,8 +80,8 @@ public class InputNhanKhau extends JFrame{
 	jLabel_noicap.setFont(font);
         JLabel jLabel_ttt = new JLabel("Noi thuong tru truoc");
 	jLabel_ttt.setFont(font);
-        JLabel jLabel_ngaychuyen = new JLabel("Ngay chuyen");
-	jLabel_ngaychuyen.setFont(font);
+//        JLabel jLabel_ngaychuyen = new JLabel("Ngay chuyen");
+//	jLabel_ngaychuyen.setFont(font);
         
         jTextField_ten = new JTextField(50);
 	jTextField_ten.setFont(font);
@@ -105,8 +115,8 @@ public class InputNhanKhau extends JFrame{
 	jTextField_noicap.setFont(font);
         jTextField_ttt = new JTextField(50);
 	jTextField_ttt.setFont(font);
-	jTextField_ngaychuyen = new JTextField(50);
-	jTextField_ngaychuyen.setFont(font);
+//	jTextField_ngaychuyen = new JTextField(50);
+//	jTextField_ngaychuyen.setFont(font);
 		
         JPanel jPanelIO = new JPanel();
 	jPanelIO.setLayout(new GridLayout(17, 2, 2, 10));
@@ -126,17 +136,97 @@ public class InputNhanKhau extends JFrame{
         jPanelIO.add(jLabel_ngaycap); jPanelIO.add(jTextField_ngaycap);
         jPanelIO.add(jLabel_noicap); jPanelIO.add(jTextField_noicap);
         jPanelIO.add(jLabel_ttt); jPanelIO.add(jTextField_ttt);
-        jPanelIO.add(jLabel_ngaychuyen); jPanelIO.add(jTextField_ngaychuyen);
+//        jPanelIO.add(jLabel_ngaychuyen); jPanelIO.add(jTextField_ngaychuyen);
         
+        ActionListener ac = new AdminListener(this);
         //JScrollPane js = new JScrollPane(jPanelIO, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        //this.nk.setTen(jTextField_ten.getText());
+        //System.out.println(this.nk.getTen());
+        
+        
+        
         
         JButton jb = new JButton("Them");
         jb.setFont(font);
+        jb.addActionListener(ac);
         this.setLayout(new BorderLayout(10, 10));
 	this.add(jPanelIO, BorderLayout.CENTER);
         this.add(jb,BorderLayout.SOUTH);
         
         this.setVisible(true);
+    }
+    public void them(){
+        this.nk.setTen(jTextField_ten.getText());
+        
+        // Extract the text from jTextField_ngaysinh
+        String ngaySinhText = jTextField_ngaysinh.getText();
+        // Parse the text into a java.util.Date      
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date utilDate = null;
+        try {
+            utilDate = dateFormat.parse(ngaySinhText);
+        } catch (ParseException ex) {
+            Logger.getLogger(InputNhanKhau.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // Convert java.util.Date to java.sql.Date
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+
+        this.nk.setNgaySinh(sqlDate);
+
+        this.nk.setNote(jTextField_note.getText());
+        this.nk.setQuanHe(jTextField_note.getText());
+        this.nk.setMa_hk(jTextField_mahk.getText());
+        this.nk.setBiDanh(jTextField_bidanh.getText());
+        String gioitinh =  jTextField_gioitinh.getText();
+        
+        try {
+            int gioiTinh = Integer.parseInt(jTextField_gioitinh.getText());
+            this.nk.setGioiTinh(gioiTinh);
+        } catch (NumberFormatException nfe) {
+            // Handle the case where the input is not a valid integer
+            nfe.printStackTrace();
+            }
+           
+           
+            this.nk.setDanToc(jTextField_dt.getText());
+            this.nk.setQueQuan(jTextField_que.getText());
+            this.nk.setTonGiao(jTextField_tongiao.getText());
+            this.nk.setNgheNghiep(jTextField_nghe.getText());
+            this.nk.setNoiLam(jTextField_noilam.getText());
+            this.nk.setCccd(jTextField_cccd.getText());
+            
+            ngaySinhText = jTextField_ngaycap.getText();     
+            utilDate = null;
+            try {
+            utilDate = dateFormat.parse(ngaySinhText);
+            } catch (ParseException ex) {
+            Logger.getLogger(InputNhanKhau.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            sqlDate = new java.sql.Date(utilDate.getTime());
+            this.nk.setNgayCap(sqlDate);
+            
+            this.nk.setNoiCap(jTextField_noicap.getText());
+            this.nk.setNoiTTTruoc(jTextField_ttt.getText());
+            
+//            ngaySinhText = jTextField_ngaychuyen.getText();     
+//            java.util.Date utilDate1 = null;
+//            if(!ngaySinhText.equals("") ){
+//            
+//            try {
+//            utilDate1 = dateFormat.parse(ngaySinhText);
+//            } catch (ParseException ex) {
+//            Logger.getLogger(InputNhanKhau.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            sqlDate = new java.sql.Date(utilDate1.getTime());
+//            this.nk.setNgaychuyen(sqlDate);
+//            }
+            
+            System.out.println(this.nk.getTen());
+            System.out.println(this.nk.getNgaySinh());
+            System.out.println(this.nk.getNote());
+            System.out.println(nk.toString());
+            
+            NhanKhauDAO.getInstance().insert(nk);
     }
     
 }

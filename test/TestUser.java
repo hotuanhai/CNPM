@@ -5,6 +5,7 @@
 package test;
 
 import view.admin.AdminView;
+import view.admin.InputNhanKhau;
 import view.admin.UserInputFile;
 import view.user.UserView;
 
@@ -14,6 +15,6 @@ import view.user.UserView;
  */
 public class TestUser {
     public static void main(String[] args) {
-        new AdminView();
+       new InputNhanKhau();
     }
 }

@@ -21,8 +21,31 @@ public class NhanKhau {
     private String noiCap;
     private String noiTTTruoc;
     private Date ngaychuyen;
+    private String address;
 
     public NhanKhau() {
+    }
+
+    public NhanKhau(int id, String ten, Date ngaySinh, String note, String quanHe, String ma_hk, String biDanh, int gioiTinh, String danToc, String queQuan, String tonGiao, String ngheNghiep, String noiLam, String cccd, Date ngayCap, String noiCap, String noiTTTruoc, Date ngaychuyen, String address) {
+        this.id = id;
+        this.ten = ten;
+        this.ngaySinh = ngaySinh;
+        this.note = note;
+        this.quanHe = quanHe;
+        this.ma_hk = ma_hk;
+        this.biDanh = biDanh;
+        this.gioiTinh = gioiTinh;
+        this.danToc = danToc;
+        this.queQuan = queQuan;
+        this.tonGiao = tonGiao;
+        this.ngheNghiep = ngheNghiep;
+        this.noiLam = noiLam;
+        this.cccd = cccd;
+        this.ngayCap = ngayCap;
+        this.noiCap = noiCap;
+        this.noiTTTruoc = noiTTTruoc;
+        this.ngaychuyen = ngaychuyen;
+        this.address = address;
     }
 
     public NhanKhau(int id, String ten, Date ngaySinh, String note, String quanHe, String ma_hk, String biDanh, int gioiTinh, String danToc, String queQuan, String tonGiao, String ngheNghiep, String noiLam, String cccd, Date ngayCap, String noiCap, String noiTTTruoc, Date ngaychuyen) {
@@ -56,18 +79,23 @@ public class NhanKhau {
 
     @Override
     public String toString() {
-        return "NhanKhau{" + "id=" + id + ", ten=" + ten + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + ", ngheNghiep=" + ngheNghiep + ", cccd=" + cccd + '}';
+        return "NhanKhau{" + "id=" + id + ", ten=" + ten + ", ngaySinh=" + ngaySinh + ", note=" + note + ", quanHe=" + quanHe + ", ma_hk=" + ma_hk + ", biDanh=" + biDanh + ", gioiTinh=" + gioiTinh + ", danToc=" + danToc + ", queQuan=" + queQuan + ", tonGiao=" + tonGiao + ", ngheNghiep=" + ngheNghiep + ", noiLam=" + noiLam + ", cccd=" + cccd + ", ngayCap=" + ngayCap + ", noiCap=" + noiCap + ", noiTTTruoc=" + noiTTTruoc + ", ngaychuyen=" + ngaychuyen + ", address=" + address + '}';
     }
 
     
+
     
-    
-    
-    
-    
-    
-    
-    
+//    public String toString1() {
+//        return "NhanKhau{" + "id=" + id + ", ten=" + ten + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + ", ngheNghiep=" + ngheNghiep + ", cccd=" + cccd + '}';
+//    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }   
     
     public int getId() {
         return id;

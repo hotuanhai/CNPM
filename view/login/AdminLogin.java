@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 import javax.swing.border.EmptyBorder;
+import view.admin.AdminView;
 
 public class AdminLogin extends JFrame{
     private static final long serialVersionUID = 1L;
@@ -89,6 +90,9 @@ public class AdminLogin extends JFrame{
                     ResultSet rs = st.executeQuery();
                     if (rs.next()) {
                         dispose();
+                        
+                          String macb = rs.getString("ma_cb");
+                        AdminView av = new AdminView(macb);
                         JOptionPane.showMessageDialog(btnNewButton, "You have successfully logged in");
                     } else {
                         JOptionPane.showMessageDialog(btnNewButton, "Wrong Username & Password");

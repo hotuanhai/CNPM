@@ -2,18 +2,16 @@
 package test;
 
 import javax.swing.UIManager;
+import view.login.AdminLogin;
 import view.login.BeginLogin;
 
-/**
- *
- * @author Admin
- */
+
 public class TestLogin {
     public static void main(String[] args) {
 		try {
                     
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                    new BeginLogin();
+                    new AdminLogin();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}	
