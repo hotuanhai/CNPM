@@ -75,6 +75,7 @@ public class AdminView extends JFrame{
 	jMenu_Them.addSeparator();
 	jMenu_Them.add(jMenuItem_ttiep);
         
+        jMenu_Thaydoi.add(jMenu_Them);
         JMenu jMenu_Themhk = new JMenu("Thêm hộ khẩu");
 //	JMenuItem jMenuItem_filehk = new JMenuItem("file txt");
 //	jMenuItem_filehk.addActionListener(av);
@@ -86,12 +87,15 @@ public class AdminView extends JFrame{
 	jMenu_Themhk.addSeparator();
 	jMenu_Themhk.add(jMenuItem_tructiep);
         
+        JMenuItem jMenuItem_thuphi = new JMenuItem("Thu phí");
+        jMenuItem_thuphi.addActionListener(av);
         
         jMenuBar.add(jMenu_information);
 	jMenuBar.add(jMenu_xingiay);
         jMenuBar.add(jMenu_Thaydoi);
-        jMenuBar.add(jMenu_Them);
+        //jMenuBar.add(jMenu_Them);
         jMenuBar.add(jMenu_Themhk);
+        jMenuBar.add(jMenuItem_thuphi);
 
         this.setJMenuBar(jMenuBar);
         

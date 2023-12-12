@@ -2,6 +2,7 @@
 package test;
 
 import javax.swing.UIManager;
+import view.login.AdminLogin;
 import view.login.BeginLogin;
 
 
@@ -10,7 +11,7 @@ public class TestLogin {
 		try {
                     
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                    new BeginLogin();
+                    new AdminLogin();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}	

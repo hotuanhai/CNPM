@@ -16,9 +16,11 @@ import view.admin.InputNhanKhau;
 import view.admin.KhaiSinh;
 import view.admin.KhaiTu;
 import view.admin.TachHoKhau;
+import view.admin.TimKiemNKView;
 import view.admin.UserInputFile;
 import view.admin.paper.XinTamTru;
 import view.admin.paper.XinTamVang;
+import view.admin.thuphi.ThuPhiView;
 
 /**
  *
@@ -33,11 +35,19 @@ public class AdminListener implements ActionListener{
     private KhaiTu kt;
     private ChuyenDi cd;
     private TachHoKhau thk;
+    private ThuPhiView tpv;
+    TimKiemNKView tknkv;
 //    private XinTamVang xtv;
 //    
 //    public AdminListener(XinTamVang xtv){
 //        this.xtv = xtv;
 //    }
+    public AdminListener(TimKiemNKView tknkv){
+        this.tknkv = tknkv;
+    }
+    public AdminListener(ThuPhiView tpv){
+        this.tpv = tpv;
+    }
     public AdminListener(TachHoKhau thk){
         this.thk=thk;
     }
@@ -108,6 +118,9 @@ public class AdminListener implements ActionListener{
         else if(src.equals("truc tiep")){
             new InputHoKhau();
         }
+        else if(src.equals("Thu phí")){
+            new ThuPhiView();
+        }
         else if(src.equals("Thêm hộ khẩu")){
             this.ihk.saveToAttributes();
         }
@@ -125,6 +138,15 @@ public class AdminListener implements ActionListener{
         }
         else if(src.equals("Nộp tách hộ khẩu")){
             this.thk.saveToAttributes();
+        }
+        else if(src.equals("Tìm kiếm")){
+            this.tknkv.timkiem();
+        }
+        
+        //thu phi view
+        else if(src.equals("Thêm khoản thu")){
+            this.tpv.themKhoanThu();
+            
         }
     }
     

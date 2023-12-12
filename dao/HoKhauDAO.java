@@ -94,5 +94,24 @@ public class HoKhauDAO implements DAOInterface<SoHoKhau>{
     public ArrayList<SoHoKhau> selectByHoKhau(String condition) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+    public ArrayList<String> selectHoKhau(){
+        ArrayList<String> kq = new ArrayList<String>();
+        try {
+            
+        Connection con = JDBCUtil.getConnection();
+                  
+        Statement st = con.createStatement();
+        String sql = "select ma_hk from HO_KHAU";
+        ResultSet rs = st.executeQuery(sql);
+        
+        while(rs.next()){
+            String id =rs.getString("ma_hk");                        
+            kq.add(id);
+        }
+        JDBCUtil.closeConnection(con);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanKhauDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return kq;
+    }
 }

@@ -4,9 +4,11 @@
  */
 package test;
 
+import dao.HoKhauDAO;
 import java.awt.EventQueue;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import view.admin.ChuyenDi;
@@ -14,9 +16,11 @@ import view.admin.InputHoKhau;
 import view.admin.InputNhanKhau;
 import view.admin.KhaiSinh;
 import view.admin.TachHoKhau;
+import view.admin.TimKiemNKView;
 import view.admin.UserInputFile;
 import view.admin.paper.XinTamTru;
 import view.admin.paper.XinTamVang;
+import view.admin.thuphi.ThuPhiView;
 import view.login.AdminLogin;
 import view.login.UserLogin;
 
@@ -55,6 +59,12 @@ public class testul {
         //new KhaiSinh();
         //new InputHoKhau();
         //new ChuyenDi();
-        new TachHoKhau();
+        //new TachHoKhau();
+       // new TimKiemNKView();
+       new ThuPhiView();
+//       ArrayList<String> kq = HoKhauDAO.getInstance().selectHoKhau();
+//       for( String i : kq){
+//           System.out.println(i);
+//       }
     }
 }
