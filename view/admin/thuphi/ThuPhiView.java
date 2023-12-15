@@ -54,6 +54,7 @@ public class ThuPhiView extends JFrame{
         ngay = new JTextField(20);
         sotien = new JTextField(20);
         ma_hk = new JTextField(20);
+        
         JButton submit = new JButton("Thêm khoản thu");
         submit.addActionListener(ac);
         JButton xemkt = new JButton("Xem tất cả");
@@ -117,7 +118,7 @@ public class ThuPhiView extends JFrame{
     
     public void themKhoanThu(){
         this.kthu = new KhoanThu();
-        System.out.println("ssdf");
+        
         kthu.setMa_thu(ma_thu.getText());
         
         try {
@@ -168,4 +169,19 @@ public class ThuPhiView extends JFrame{
             TrangThaiThuDAO.getInstance().insert(tthai);
         }
     }
+    
+    public void bangttthu(){
+        
+        new BangTTThu(TrangThaiThuDAO.getInstance().selectAll());
+    }
+    public void bangchuadong(){
+        
+        new BangTTThu(TrangThaiThuDAO.getInstance().selectby0());
+    }
+    
+    public void bangtheo_hokhau(){
+        ArrayList<TrangThaiThu> tt = TrangThaiThuDAO.getInstance().selectbyhokhau(ma_hk.getText());
+        new BangTTThu(tt);
+    }
+    
 }
