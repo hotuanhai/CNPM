@@ -20,6 +20,8 @@ import view.admin.TimKiemNKView;
 import view.admin.UserInputFile;
 import view.admin.paper.XinTamTru;
 import view.admin.paper.XinTamVang;
+import view.admin.thuphi.BangDongGop;
+import view.admin.thuphi.DongGopView;
 import view.admin.thuphi.ThuPhiView;
 import view.login.AdminLogin;
 import view.login.UserLogin;
@@ -61,10 +63,12 @@ public class testul {
         //new ChuyenDi();
         //new TachHoKhau();
        // new TimKiemNKView();
-       new ThuPhiView();
+       //new ThuPhiView();
 //       ArrayList<String> kq = HoKhauDAO.getInstance().selectHoKhau();
 //       for( String i : kq){
 //           System.out.println(i);
 //       }
+        new DongGopView();
+        //new BangDongGop();
     }
 }

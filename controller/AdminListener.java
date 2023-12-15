@@ -20,6 +20,7 @@ import view.admin.TimKiemNKView;
 import view.admin.UserInputFile;
 import view.admin.paper.XinTamTru;
 import view.admin.paper.XinTamVang;
+import view.admin.thuphi.DongGopView;
 import view.admin.thuphi.ThuPhiView;
 
 /**
@@ -37,6 +38,7 @@ public class AdminListener implements ActionListener{
     private TachHoKhau thk;
     private ThuPhiView tpv;
     TimKiemNKView tknkv;
+    private DongGopView dgv;
 //    private XinTamVang xtv;
 //    
 //    public AdminListener(XinTamVang xtv){
@@ -44,6 +46,9 @@ public class AdminListener implements ActionListener{
 //    }
     public AdminListener(TimKiemNKView tknkv){
         this.tknkv = tknkv;
+    }
+    public AdminListener(DongGopView dgv){
+        this.dgv = dgv;
     }
     public AdminListener(ThuPhiView tpv){
         this.tpv = tpv;
@@ -83,6 +88,7 @@ public class AdminListener implements ActionListener{
                 Logger.getLogger(AdminListener.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        //admin
         else if(src.equals("File txt")){
             new UserInputFile();
         }
@@ -121,6 +127,9 @@ public class AdminListener implements ActionListener{
         else if(src.equals("Thu phí")){
             new ThuPhiView();
         }
+        else if(src.equals("Đóng góp")){
+            new DongGopView();
+        }
         else if(src.equals("Thêm hộ khẩu")){
             this.ihk.saveToAttributes();
         }
@@ -147,6 +156,28 @@ public class AdminListener implements ActionListener{
         else if(src.equals("Thêm khoản thu")){
             this.tpv.themKhoanThu();
             
+        }
+        else if(src.equals("Xem tất cả")){
+           this.tpv.bangttthu();
+        }
+        else if(src.equals("Xem hộ chưa đóng")){
+           this.tpv.bangchuadong();
+        }
+        else if(src.equals("Tìm theo hộ")){
+           this.tpv.bangtheo_hokhau();
+        }
+        //donggopview
+        else if(src.equals("Thêm đóng góp")){
+           this.dgv.themTenDongGop();
+        }
+        else if(src.equals("Xem đóng góp")){
+           this.dgv.bangTenDongGop();
+        }
+        else if(src.equals("Thêm vào danh sách")){
+           this.dgv.themDanhSach();
+        }
+        else if(src.equals("Tìm danh sách")){
+           this.dgv.timDanhsach();
         }
     }
     

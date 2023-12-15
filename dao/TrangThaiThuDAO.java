@@ -7,6 +7,7 @@ package dao;
 import database.JDBCUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -52,7 +53,27 @@ public class TrangThaiThuDAO implements DAOInterface<TrangThaiThu>{
 
     @Override
     public ArrayList<TrangThaiThu> selectAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<TrangThaiThu> kq = new ArrayList<TrangThaiThu>();
+        try {
+            
+            Connection con = JDBCUtil.getConnection();         
+
+            String sql ="select * from TRANGTHAI_THU";
+            PreparedStatement st = con.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                String mathu =rs.getString("ma_thu");
+                String mahk = rs.getString("ma_hk");
+                int trangthai = rs.getInt("trangthai");
+
+                TrangThaiThu sh = new TrangThaiThu(mathu, mahk,trangthai);
+                kq.add(sh);
+            }
+            JDBCUtil.closeConnection(con);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanKhauDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return kq;   
     }
 
     @Override
@@ -60,4 +81,52 @@ public class TrangThaiThuDAO implements DAOInterface<TrangThaiThu>{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+    public ArrayList<TrangThaiThu> selectby0() {
+        ArrayList<TrangThaiThu> kq = new ArrayList<TrangThaiThu>();
+        try {
+            
+            Connection con = JDBCUtil.getConnection();         
+
+            String sql ="select * from TRANGTHAI_THU where trangthai = 0";
+            PreparedStatement st = con.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                String mathu =rs.getString("ma_thu");
+                String mahk = rs.getString("ma_hk");
+                int trangthai = rs.getInt("trangthai");
+
+                TrangThaiThu sh = new TrangThaiThu(mathu, mahk,trangthai);
+                kq.add(sh);
+            }
+            JDBCUtil.closeConnection(con);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanKhauDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return kq;   
+    }
+    
+    public ArrayList<TrangThaiThu> selectbyhokhau(String ma_hk) {
+        ArrayList<TrangThaiThu> kq = new ArrayList<TrangThaiThu>();
+        try {
+            
+            Connection con = JDBCUtil.getConnection();         
+
+            String sql ="select * from TRANGTHAI_THU where ma_hk = ?";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setString(1, ma_hk);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                String mathu =rs.getString("ma_thu");
+                String mahk = rs.getString("ma_hk");
+                int trangthai = rs.getInt("trangthai");
+
+                TrangThaiThu sh = new TrangThaiThu(mathu, mahk,trangthai);
+                kq.add(sh);
+            }
+            JDBCUtil.closeConnection(con);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanKhauDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return kq;   
+    }
 }

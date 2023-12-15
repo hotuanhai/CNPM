@@ -87,15 +87,20 @@ public class AdminView extends JFrame{
 	jMenu_Themhk.addSeparator();
 	jMenu_Themhk.add(jMenuItem_tructiep);
         
+        JMenu jMenu_Thuchi = new JMenu("Quản lý thu phí");
         JMenuItem jMenuItem_thuphi = new JMenuItem("Thu phí");
         jMenuItem_thuphi.addActionListener(av);
+        JMenuItem jMenuItem_donggop = new JMenuItem("Đóng góp");
+        jMenuItem_donggop.addActionListener(av);
+        jMenu_Thuchi.add(jMenuItem_thuphi);
+        jMenu_Thuchi.add(jMenuItem_donggop);
         
         jMenuBar.add(jMenu_information);
 	jMenuBar.add(jMenu_xingiay);
         jMenuBar.add(jMenu_Thaydoi);
         //jMenuBar.add(jMenu_Them);
         jMenuBar.add(jMenu_Themhk);
-        jMenuBar.add(jMenuItem_thuphi);
+        jMenuBar.add(jMenu_Thuchi);
 
         this.setJMenuBar(jMenuBar);
         
