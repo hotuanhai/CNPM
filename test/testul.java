@@ -18,6 +18,8 @@ import view.admin.KhaiSinh;
 import view.admin.TachHoKhau;
 import view.admin.TimKiemNKView;
 import view.admin.UserInputFile;
+import view.admin.capthuong.BangHocSinh;
+import view.admin.capthuong.CapThuongDipView;
 import view.admin.paper.XinTamTru;
 import view.admin.paper.XinTamVang;
 import view.admin.thuphi.BangDongGop;
@@ -68,7 +70,10 @@ public class testul {
 //       for( String i : kq){
 //           System.out.println(i);
 //       }
-        new DongGopView();
+        //new DongGopView();
         //new BangDongGop();
+        //new CapThuongDipView();
+      //  new ThuPhiView();
+      new BangHocSinh();
     }
 }
