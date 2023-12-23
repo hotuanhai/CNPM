@@ -72,8 +72,8 @@ public class testul {
 //       }
         //new DongGopView();
         //new BangDongGop();
-        //new CapThuongDipView();
+        new CapThuongDipView();
       //  new ThuPhiView();
-      new BangHocSinh();
+      //new BangHocSinh();
     }
 }

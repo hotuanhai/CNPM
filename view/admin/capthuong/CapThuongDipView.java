@@ -5,13 +5,16 @@
 package view.admin.capthuong;
 
 import controller.CapThuongListener;
+import dao.CapThuongHocDAO;
 import dao.NhanKhauDAO;
 import dao.TenCapThuongDipDAO;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,6 +23,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import model.CapThuongDip;
+import model.CapThuongHoc;
 import model.NhanKhau;
 
 /**
@@ -34,6 +38,8 @@ public class CapThuongDipView extends JFrame{
     JScrollPane js;
     String[] col;
     DefaultTableModel tableModel;
+    JComboBox loaids_ComboBox;
+    private String loaids = "Theo dịp";
      public CapThuongDipView(){
         setTitle("Cấp thưởng theo dịp");
         setSize(800, 600);
@@ -56,9 +62,21 @@ public class CapThuongDipView extends JFrame{
         btn_timquatheoho.addActionListener(ac);
         JButton btn_xemTenQua = new JButton("Xem phần thưởng");
         btn_xemTenQua.addActionListener(ac);
+        JButton btn_xemhsinh = new JButton("Danh sách học sinh");
+        btn_xemhsinh.addActionListener(ac);
+        
+        loaids_ComboBox = new JComboBox<>(new String[]{"Theo dịp", "Theo học tập", "Tất cả"});
+        loaids_ComboBox.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            loaids = (String) loaids_ComboBox.getSelectedItem();
+            phatPT();
+        }
+        });
+        
         
         this.setLayout(new BorderLayout());
-        JPanel inputPanel = new JPanel(new GridLayout(7, 5));
+        JPanel inputPanel = new JPanel(new GridLayout(8, 5));
         
         inputPanel.add(new JLabel("Thêm phần thưởng:"));  
         inputPanel.add(new JLabel());
@@ -85,8 +103,8 @@ public class CapThuongDipView extends JFrame{
         inputPanel.add(sotien);
 
         inputPanel.add(new JLabel()); 
-        inputPanel.add(new JLabel());
-        inputPanel.add(new JLabel()); 
+        inputPanel.add(new JLabel("Xem danh sách học sinh:"));
+        inputPanel.add(btn_xemhsinh); 
         
         inputPanel.add(new JLabel("Tên quà:"));
         inputPanel.add(tenqua);
@@ -100,7 +118,15 @@ public class CapThuongDipView extends JFrame{
         
         inputPanel.add(new JLabel()); 
         inputPanel.add(new JLabel());
+        inputPanel.add(new JLabel());
+        
+        inputPanel.add(new JLabel("Danh sách cấp thưởng")); 
+        inputPanel.add(loaids_ComboBox);
+        
+        
         inputPanel.add(new JLabel()); 
+        inputPanel.add(new JLabel());
+        inputPanel.add(new JLabel());
         
         inputPanel.add(jl_soqua); 
         inputPanel.add(jl_sotien);
@@ -113,6 +139,7 @@ public class CapThuongDipView extends JFrame{
         tableModel = new DefaultTableModel(col, 0);
         jt = new JTable(tableModel);
         js = new JScrollPane(jt);
+        
         phatPT();
         
         this.add(js, BorderLayout.CENTER);
@@ -136,9 +163,17 @@ public class CapThuongDipView extends JFrame{
         tableModel.setRowCount(0);
         phatPT();
     }
-    
     public void phatPT(){
-       tableModel.setRowCount(0); // Clear existing data
+        tableModel.setRowCount(0); // Clear existing data
+        if(loaids.equals("Theo dịp")){
+            phatPTdip();
+        }
+        else if(loaids.equals("Theo học tập")){
+            phatPThoc();
+        }
+    }
+    public void phatPTdip(){
+       
         ArrayList<NhanKhau> nk = NhanKhauDAO.getInstance().selectByage018();
         ArrayList<String> ten_ma = TenCapThuongDipDAO.getInstance().selectTenCT();
         for(NhanKhau i: nk){
@@ -151,16 +186,58 @@ public class CapThuongDipView extends JFrame{
                 tableModel.addRow(data);
             }
         }
-        soQuaTien(jt.getRowCount());
+        soQuaTien();
     }
-    
+    public void soQuaTien(){
+        int tongsoqua= jt.getRowCount();
+        jl_soqua.setText("Tổng số quà: "+ tongsoqua);
+        int sotienqua = TenCapThuongDipDAO.getInstance().tiensoqua();
+        int soqua = TenCapThuongDipDAO.getInstance().soqua();
+        int songuoi = tongsoqua / soqua;
+        int tien = sotienqua * songuoi;
+        jl_sotien.setText("Tổng số tiền: "+ tien);
+    }
+    public void phatPThoc(){
+        
+        ArrayList<CapThuongHoc> cth = CapThuongHocDAO.getInstance().selectAll();
+        for(CapThuongHoc i : cth){
+            String mahk = i.getMa_hk();
+            int id = i.getId();
+            String ten = i.getTen();
+            String ma_ct = TenCapThuongDipDAO.getInstance().ten_mathuong(i);
+            Object[] data = {id,ten, mahk, ma_ct};
+            tableModel.addRow(data);
+        }
+        soQuaTienhoc();
+    }
+    public void soQuaTienhoc(){
+        int tongsoqua= jt.getRowCount();
+        jl_soqua.setText("Tổng số quà: "+ tongsoqua);
+        int tien = 0;
+        for (int row = 0; row < tableModel.getRowCount(); row++) {
+            // Assuming the "ID" column is at index 0
+            String value = (String)tableModel.getValueAt(row, 3);
+            System.out.println(value);
+            tien += TenCapThuongDipDAO.getInstance().Selecttien_mathuong(value);
+            
+        }
+        jl_sotien.setText("Tổng số tiền: "+ tien);
+    }
     public void xemPT(){
          //ArrayList<CapThuongDip> kq = TenCapThuongDipDAO.getInstance().selectAll();
          new BangCTDip();
     }
-    
     public void timTheoHo(){
         tableModel.setRowCount(0); // Clear existing data
+        if(loaids.equals("Theo dịp")){
+            timTheoHodip();
+        }
+        else if(loaids.equals("Theo học tập")){
+            timTheoHohoc();
+        }
+        field_mahk.setText("");
+    }
+    public void timTheoHodip(){
         ArrayList<NhanKhau> nk = NhanKhauDAO.getInstance().selectByage018();
         ArrayList<String> ten_ma = TenCapThuongDipDAO.getInstance().selectTenCT();
         for(NhanKhau i: nk){
@@ -175,15 +252,26 @@ public class CapThuongDipView extends JFrame{
                 }
             }
         }
-        soQuaTien(jt.getRowCount());
+        soQuaTien();
+    }
+    public void timTheoHohoc(){
+        ArrayList<CapThuongHoc> cth = CapThuongHocDAO.getInstance().selectAll();
+        for(CapThuongHoc i : cth){
+            String mahk = i.getMa_hk();
+            if(mahk.equals(field_mahk.getText())){
+                int id = i.getId();
+                String ten = i.getTen();
+                String ma_ct = TenCapThuongDipDAO.getInstance().ten_mathuong(i);
+                Object[] data = {id,ten, mahk, ma_ct};
+                tableModel.addRow(data);
+            }
+        }
+        soQuaTienhoc();
     }
     
-    public void soQuaTien(int tongsoqua){
-        jl_soqua.setText("Tổng số quà: "+ tongsoqua);
-        int sotienqua = TenCapThuongDipDAO.getInstance().tiensoqua();
-        int soqua = TenCapThuongDipDAO.getInstance().soqua();
-        int songuoi = tongsoqua / soqua;
-        int tien = sotienqua * songuoi;
-        jl_sotien.setText("Tổng số tiền: "+ tien);
+    
+    
+    public void danhsach_hs(){
+        new BangHocSinh();
     }
 }

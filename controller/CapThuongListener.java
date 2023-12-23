@@ -36,6 +36,10 @@ public class CapThuongListener implements ActionListener{
             this.bctd.deleteSelectedRow();
             //this.ctdv.phatPT();
         }
+        else if(src.equals("Danh sách học sinh")){
+            this.ctdv.danhsach_hs();
+            //this.ctdv.phatPT();
+        }
     }
     
 }

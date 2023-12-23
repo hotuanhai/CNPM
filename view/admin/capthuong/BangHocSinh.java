@@ -57,7 +57,8 @@ public class BangHocSinh extends JFrame {
             cth.setId(i.getId());
             cth.setMa_hk(i.getMa_hk());
             cth.setTen(i.getTen());
-            tableModel.addRow(new Object[]{cth.getId(), cth.getTen(), cth.getMa_hk(), ""});
+            cth.setThanhtich(i.getThanhtich());
+            tableModel.addRow(new Object[]{cth.getId(), cth.getTen(), cth.getMa_hk(), cth.getThanhtich()});
         }
     }
 

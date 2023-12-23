@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.CapThuongDip;
+import model.CapThuongHoc;
 import model.SoHoKhau;
 
 /**
@@ -173,6 +174,43 @@ public class TenCapThuongDipDAO implements DAOInterface<CapThuongDip>{
                 kq = rs.getInt("soqua");
             }
             
+            JDBCUtil.closeConnection(con);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanKhauDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return kq;
+    }
+    
+    public String ten_mathuong(CapThuongHoc i){
+        String kq = "";
+        try{    
+            Connection con = JDBCUtil.getConnection();
+         
+            String query = "(select ma_thuong from CAPTHUONG_DIP where tenqua = ?)";
+            PreparedStatement selectSt = con.prepareStatement(query);
+            selectSt.setString(1, i.getQua()); 
+            ResultSet rs = selectSt.executeQuery();
+            if (rs.next()) {
+                kq = rs.getString("ma_thuong");
+            }            
+            JDBCUtil.closeConnection(con);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanKhauDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return kq;
+    }
+    public int Selecttien_mathuong(String i){
+        int kq = 0;
+        try{    
+            Connection con = JDBCUtil.getConnection();
+         
+            String query = "(select sotien from CAPTHUONG_DIP where ma_thuong = ?)";
+            PreparedStatement selectSt = con.prepareStatement(query);
+            selectSt.setString(1, i); 
+            ResultSet rs = selectSt.executeQuery();
+            if (rs.next()) {
+                kq = rs.getInt("sotien");
+            }            
             JDBCUtil.closeConnection(con);
         } catch (SQLException ex) {
             Logger.getLogger(NhanKhauDAO.class.getName()).log(Level.SEVERE, null, ex);

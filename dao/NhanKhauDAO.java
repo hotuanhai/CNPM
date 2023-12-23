@@ -106,7 +106,7 @@ public class NhanKhauDAO implements DAOInterface<NhanKhau>{
             
         
         Statement st = con.createStatement();
-        String sql = "select * from NHAN_KHAU";
+        String sql = "select * from NHAN_KHAU order by ma_hk ASC";
         ResultSet rs = st.executeQuery(sql);
         
         while(rs.next()){
@@ -178,7 +178,7 @@ public class NhanKhauDAO implements DAOInterface<NhanKhau>{
             
         String sql = "SELECT id,ma_hk,name\n" +
                     "FROM NHAN_KHAU\n" +
-                    "WHERE DATEDIFF(YEAR, birth, GETDATE()) BETWEEN 0 AND 18;";
+                    "WHERE DATEDIFF(YEAR, birth, GETDATE()) BETWEEN 0 AND 18 order by ma_hk ASC;";
         PreparedStatement st = con.prepareStatement(sql);
          
         ResultSet rs = st.executeQuery();
@@ -207,7 +207,7 @@ public class NhanKhauDAO implements DAOInterface<NhanKhau>{
             
         String sql = "SELECT id,ma_hk,name\n" +
                     "FROM NHAN_KHAU\n" +
-                    "WHERE DATEDIFF(YEAR, birth, GETDATE()) BETWEEN 6 AND 18;";
+                    "WHERE DATEDIFF(YEAR, birth, GETDATE()) BETWEEN 6 AND 18 order by ma_hk ASC;";
         PreparedStatement st = con.prepareStatement(sql);
          
         ResultSet rs = st.executeQuery();
