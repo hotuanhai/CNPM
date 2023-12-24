@@ -18,6 +18,7 @@ import view.admin.KhaiTu;
 import view.admin.TachHoKhau;
 import view.admin.TimKiemNKView;
 import view.admin.UserInputFile;
+import view.admin.capthuong.CapThuongDipView;
 import view.admin.paper.XinTamTru;
 import view.admin.paper.XinTamVang;
 import view.admin.thuphi.DongGopView;
@@ -178,6 +179,10 @@ public class AdminListener implements ActionListener{
         }
         else if(src.equals("Tìm danh sách")){
            this.dgv.timDanhsach();
+        }
+        //capthuong
+        else if(src.equals("Quản lý cấp thưởng")){
+          new CapThuongDipView();
         }
     }
     

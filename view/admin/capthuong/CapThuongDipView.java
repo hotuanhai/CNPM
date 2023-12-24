@@ -13,6 +13,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -21,7 +22,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import model.CapThuongDip;
 import model.CapThuongHoc;
 import model.NhanKhau;
@@ -171,6 +175,16 @@ public class CapThuongDipView extends JFrame{
         else if(loaids.equals("Theo học tập")){
             phatPThoc();
         }
+        else if(loaids.equals("Tất cả")){
+            phatPTdip();
+            phatPThoc();
+            TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tableModel);
+            jt.setRowSorter(sorter);
+
+             // Set the sort key for the "Mã hộ khẩu" column
+            sorter.setSortKeys(Arrays.asList(new RowSorter.SortKey(2, SortOrder.ASCENDING)));
+            soQuaTienhoc();
+        }
     }
     public void phatPTdip(){
        
@@ -192,8 +206,11 @@ public class CapThuongDipView extends JFrame{
         int tongsoqua= jt.getRowCount();
         jl_soqua.setText("Tổng số quà: "+ tongsoqua);
         int sotienqua = TenCapThuongDipDAO.getInstance().tiensoqua();
+        //System.out.println(sotienqua);
         int soqua = TenCapThuongDipDAO.getInstance().soqua();
+        //System.out.println(soqua);
         int songuoi = tongsoqua / soqua;
+        //System.out.println(songuoi);
         int tien = sotienqua * songuoi;
         jl_sotien.setText("Tổng số tiền: "+ tien);
     }
@@ -217,7 +234,6 @@ public class CapThuongDipView extends JFrame{
         for (int row = 0; row < tableModel.getRowCount(); row++) {
             // Assuming the "ID" column is at index 0
             String value = (String)tableModel.getValueAt(row, 3);
-            System.out.println(value);
             tien += TenCapThuongDipDAO.getInstance().Selecttien_mathuong(value);
             
         }
@@ -233,6 +249,11 @@ public class CapThuongDipView extends JFrame{
             timTheoHodip();
         }
         else if(loaids.equals("Theo học tập")){
+            timTheoHohoc();
+        }
+
+        else if(loaids.equals("Tất cả")){
+            timTheoHodip();
             timTheoHohoc();
         }
         field_mahk.setText("");

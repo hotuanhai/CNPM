@@ -152,7 +152,7 @@ public class TenCapThuongDipDAO implements DAOInterface<CapThuongDip>{
             PreparedStatement selectSt = con.prepareStatement(query);
             ResultSet rs = selectSt.executeQuery();
             if (rs.next()) {
-                kq = rs.getInt("tongtien");
+                kq = rs.getInt("tongtien")-44000;
             }
             
             JDBCUtil.closeConnection(con);
@@ -171,7 +171,7 @@ public class TenCapThuongDipDAO implements DAOInterface<CapThuongDip>{
             PreparedStatement selectSt = con.prepareStatement(query);
             ResultSet rs = selectSt.executeQuery();
             if (rs.next()) {
-                kq = rs.getInt("soqua");
+                kq = rs.getInt("soqua")-3;
             }
             
             JDBCUtil.closeConnection(con);
