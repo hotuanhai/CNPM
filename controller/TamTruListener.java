@@ -6,6 +6,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.admin.paper.BangTamTru;
 import view.admin.paper.XinTamTru;
 
 /**
@@ -14,6 +15,10 @@ import view.admin.paper.XinTamTru;
  */
 public class TamTruListener implements ActionListener{
     private XinTamTru xtt;
+    private BangTamTru btt;
+    public TamTruListener(BangTamTru btt){
+        this.btt=btt;
+    }
     public TamTruListener(XinTamTru xtt ){
         this.xtt = xtt;
     }
@@ -23,6 +28,9 @@ public class TamTruListener implements ActionListener{
         String src = e.getActionCommand();
         if(src.equals("Submit")){
             this.xtt.saveToAttributes();
+        }
+        else if(src.equals("Xóa giấy tạm trú")){
+            this.btt.deleteSelectedRow();
         }
     }
     

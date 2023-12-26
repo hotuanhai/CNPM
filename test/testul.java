@@ -20,6 +20,8 @@ import view.admin.TimKiemNKView;
 import view.admin.UserInputFile;
 import view.admin.capthuong.BangHocSinh;
 import view.admin.capthuong.CapThuongDipView;
+import view.admin.paper.BangTamTru;
+import view.admin.paper.BangTamVang;
 import view.admin.paper.XinTamTru;
 import view.admin.paper.XinTamVang;
 import view.admin.thuphi.BangDongGop;
@@ -72,8 +74,9 @@ public class testul {
 //       }
         //new DongGopView();
         //new BangDongGop();
-        new CapThuongDipView();
+        //new CapThuongDipView();
       //  new ThuPhiView();
       //new BangHocSinh();
+      new BangTamVang();
     }
 }

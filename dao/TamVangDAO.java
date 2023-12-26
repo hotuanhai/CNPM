@@ -48,12 +48,46 @@ public class TamVangDAO implements DAOInterface<TamVang>{
 
     @Override
     public int delete(TamVang t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int kq=0;
+        try {            
+            Connection con = JDBCUtil.getConnection();
+             String sql ="DELETE  FROM TAM_VANG WHERE ma_tamvang = ? ";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setInt(1, t.getMa_tamvang());           
+            kq = st.executeUpdate();
+            //System.out.println(sql);
+            JDBCUtil.closeConnection(con);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanKhauDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return kq;
     }
 
     @Override
     public ArrayList<TamVang> selectAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         ArrayList<TamVang> kq = new ArrayList<TamVang>();
+        try {
+            
+            Connection con = JDBCUtil.getConnection();
+
+            Statement st = con.createStatement();
+            String sql = "select * from TAM_VANG";
+            ResultSet rs = st.executeQuery(sql);
+
+            while(rs.next()){
+                int ma_tamvang = rs.getInt("ma_tamvang");
+                Date from =rs.getDate("datefrom");
+                int id = rs.getInt("id");
+                Date to =rs.getDate("dateto");
+                String noitamtru = rs.getString("noitamtru");
+                TamVang sh = new TamVang(noitamtru,from, to,id,ma_tamvang);
+                kq.add(sh);
+        }
+        JDBCUtil.closeConnection(con);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanKhauDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return kq; 
     }
 
     @Override

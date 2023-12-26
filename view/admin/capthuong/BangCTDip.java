@@ -68,7 +68,7 @@ public class BangCTDip extends JFrame{
             ctd.setDip(dip);
             ctd.setMa_thuong(maThuong);
             // Confirm with the user before deletion
-            int option = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this row?",
+            int option = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn xóa dòng này?",
                     "Confirm Deletion", JOptionPane.YES_NO_OPTION);
 
             if (option == JOptionPane.YES_OPTION) {

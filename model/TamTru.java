@@ -7,14 +7,14 @@ public class TamTru {
     private String   lydo, noitamtru;
     private int thoigian;
     private int id;
-    private int ma_tamvang;
+    private int ma_tamtru;
 
-    public TamTru(String lydo, String noitamtru, int thoigian, int id, int ma_tamvang) {
+    public TamTru(String lydo, String noitamtru, int thoigian, int id, int ma_tamtru) {
         this.lydo = lydo;
         this.noitamtru = noitamtru;
         this.thoigian = thoigian;
         this.id = id;
-        this.ma_tamvang = ma_tamvang;
+        this.ma_tamtru = ma_tamtru;
     }
 
     public TamTru() {
@@ -52,18 +52,15 @@ public class TamTru {
         this.id = id;
     }
 
-    public int getMa_tamvang() {
-        return ma_tamvang;
+    public int getMa_tamtru() {
+        return ma_tamtru;
     }
 
-    public void setMa_tamvang(int ma_tamvang) {
-        this.ma_tamvang = ma_tamvang;
+    public void setMa_tamtru(int ma_tamtru) {
+        this.ma_tamtru = ma_tamtru;
     }
 
-    @Override
-    public String toString() {
-        return "TamTru{" + "lydo=" + lydo + ", noitamtru=" + noitamtru + ", thoigian=" + thoigian + ", id=" + id + ", ma_tamvang=" + ma_tamvang + '}';
-    }
+    
     
     
 }

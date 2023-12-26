@@ -6,6 +6,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.admin.paper.BangTamVang;
 import view.admin.paper.XinTamVang;
 
 /**
@@ -13,7 +14,11 @@ import view.admin.paper.XinTamVang;
  * @author Admin
  */
 public class TamVangListener implements ActionListener{
+    private BangTamVang btv;
     private XinTamVang xtv;
+    public TamVangListener(BangTamVang btv){
+        this.btv=btv;
+    }
     public TamVangListener(XinTamVang xtv){
         this.xtv = xtv;
     }
@@ -22,6 +27,9 @@ public class TamVangListener implements ActionListener{
         String src = e.getActionCommand();
         if(src.equals("Submit")){
             this.xtv.saveToAttributes();
+        }
+        else if(src.equals("Xóa giấy tạm vắng")){
+            this.btv.deleteSelectedRow();
         }
     }
     
