@@ -77,6 +77,9 @@ public class testul {
         //new CapThuongDipView();
       //  new ThuPhiView();
       //new BangHocSinh();
-      new BangTamVang();
+      //new BangTamVang();
+      //new XinTamVang();
+      //new BangTamTru();
+      new AdminLogin();
     }
 }

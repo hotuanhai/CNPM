@@ -26,11 +26,14 @@ public class TamTruListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         String src = e.getActionCommand();
-        if(src.equals("Submit")){
+        if(src.equals("Nộp đơn")){
             this.xtt.saveToAttributes();
         }
         else if(src.equals("Xóa giấy tạm trú")){
             this.btt.deleteSelectedRow();
+        }
+        else if(src.equals("Danh sách tạm trú")){
+            this.xtt.bangTT();
         }
     }
     

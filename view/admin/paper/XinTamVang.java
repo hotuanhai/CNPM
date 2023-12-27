@@ -35,8 +35,9 @@ public class XinTamVang extends JFrame{
         
         
 
-        JButton submit = new JButton("Submit");
-
+        JButton submit = new JButton("Nộp đơn");
+        JButton btn_xemtv = new JButton("Danh sách tạm vắng");
+        btn_xemtv.addActionListener(ac);
         // Set up layout
         setLayout(new GridLayout(5, 2));
 
@@ -58,8 +59,7 @@ public class XinTamVang extends JFrame{
        add(new JLabel("Nơi tạm trú:"));
         add(noi_tamtru);
         
-        add(new JLabel());
-        
+        add(btn_xemtv);        
         add(submit);    
         submit.addActionListener(ac);
         this.setVisible(true);
@@ -110,5 +110,9 @@ public class XinTamVang extends JFrame{
         this.person.setNoitamtru(noi_tamtru.getText());
         System.out.println(person);
         TamVangDAO.getInstance().insert(person);
+    }
+    
+    public void bangTV(){
+        new BangTamVang();
     }
 }

@@ -25,11 +25,14 @@ public class TamVangListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         String src = e.getActionCommand();
-        if(src.equals("Submit")){
+        if(src.equals("Nộp đơn")){
             this.xtv.saveToAttributes();
         }
         else if(src.equals("Xóa giấy tạm vắng")){
             this.btv.deleteSelectedRow();
+        }
+        else if(src.equals("Danh sách tạm vắng")){
+            this.xtv.bangTV();
         }
     }
     

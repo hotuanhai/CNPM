@@ -27,7 +27,9 @@ public class XinTamTru extends JFrame{
         thoigian = new JTextField(10);
         id = new JTextField(5);
         
-        JButton submit = new JButton("Submit");
+        JButton submit = new JButton("Nộp đơn");
+        JButton btn_xemtt = new JButton("Danh sách tạm trú");
+        btn_xemtt.addActionListener(ac);
 
         // Set up layout
         setLayout(new GridLayout(5, 2));
@@ -44,7 +46,7 @@ public class XinTamTru extends JFrame{
         add(new JLabel("Lý do:"));
         add(lydo);
         
-        add(new JLabel());        
+        add(btn_xemtt);        
         add(submit);
         submit.addActionListener(ac);
         
@@ -79,7 +81,9 @@ public class XinTamTru extends JFrame{
         TamTruDAO.getInstance().insert(person);
     }
     
-    
+    public void bangTT(){
+        new BangTamTru();
+    }
     
     
     
